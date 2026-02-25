@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgan Wanjohi - Portfolio</title>
+    <!-- Google Fonts (similar modern sans-serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e1e1e;
+            line-height: 1.5;
+        }
+
+        /* ----- Reusable container ----- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* ----- Header / Navigation (inspired by melan's clean bar) ----- */
+        header {
+            padding: 30px 0 20px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #2b2b2b, #5a5a5a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #f57c00;
+        }
+
+        /* ----- Hero Section (like "Hello This is Milan") ----- */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            background-color: #faf9f6;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: #f57c00;
+        }
+
+        .hero .subhead {
+            font-size: 1.5rem;
+            color: #4a4a4a;
+            margin: 15px 0 25px;
+            font-weight: 400;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #5a5a5a;
+        }
+
+        /* ----- Services Section (cards) ----- */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 60px 0 40px;
+            letter-spacing: -0.02em;
+            border-left: 8px solid #f57c00;
+            padding-left: 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background-color: #f8f8f8;
+            padding: 35px 25px;
+            border-radius: 24px;
+            transition: all 0.2s ease;
+            border: 1px solid #ececec;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(245, 124, 0, 0.15);
+            border-color: #f57c00;
+        }
+
+        .service-card i {
+            font-size: 2.8rem;
+            color: #f57c00;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #5a5a5a;
+            line-height: 1.6;
+        }
+
+        /* ----- Portfolio / Favorites Section (inspired by "awesome stuffs") ----- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .portfolio-item {
+            background-color: #f0f0f0;
+            border-radius: 30px;
+            padding: 40px 25px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            transition: 0.2s;
+        }
+
+        .portfolio-item i {
+            font-size: 3rem;
+            color: #f57c00;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-item h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-item p {
+            color: #6a6a6a;
+        }
+
+        .portfolio-item:hover {
+            background-color: #f57c00;
+            color: white;
+        }
+
+        .portfolio-item:hover i,
+        .portfolio-item:hover p {
+            color: white;
+        }
+
+        /* ----- About Section with stats (like 520+ projects) ----- */
+        .about-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .stat-box {
+            background: #f5f5f5;
+            padding: 30px 35px;
+            border-radius: 30px;
+            text-align: center;
+            flex: 1 1 180px;
+            border: 1px solid #eaeaea;
+        }
+
+        .stat-box .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #f57c00;
+            line-height: 1;
+        }
+
+        .stat-box .label {
+            font-size: 1.1rem;
+            color: #3e3e3e;
+            margin-top: 8px;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 40px 0 20px;
+            font-size: 1.2rem;
+            color: #3d3d3d;
+            line-height: 1.8;
+        }
+
+        /* ----- Testimonials (cards) ----- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            padding: 35px 25px;
+            border-radius: 30px;
+            border: 1px solid #e6e6e6;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #4a4a4a;
+            margin-bottom: 25px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #f57c20;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h5 {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .author-info span {
+            color: #f57c00;
+            font-size: 0.9rem;
+        }
+
+        /* ----- Contact / discussion section ----- */
+        .contact-cta {
+            background-color: #faf5ed;
+            border-radius: 50px;
+            padding: 60px 50px;
+            margin: 70px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-cta h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            max-width: 500px;
+        }
+
+        .contact-cta .btn {
+            background-color: #f57c00;
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-cta .btn:hover {
+            background-color: #e06b00;
+        }
+
+        /* ----- Footer ----- */
+        footer {
+            padding: 30px 0 40px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #6a6a6a;
+        }
+
+        /* responsiveness */
+        @media (max-width: 800px) {
+            .hero h1 { font-size: 2.8rem; }
+            .nav-links { gap: 1.5rem; }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 550px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .contact-cta { flex-direction: column; text-align: center; gap: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Morgan W.</div>
+                <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section (matching "Hello This is Milan") -->
+        <section class="hero">
+            <div class="container">
+                <h1>Hello This is <span>Morgan</span></h1>
+                <div class="subhead">Creative Technologist</div>
+                <p class="tagline">I build brands, web experiences & digital solutions</p>
+            </div>
+        </section>
+
+        <!-- Services provided -->
+        <div class="container" id="services">
+            <h2 class="section-title">Services Provided</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <h3>Graphic design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Web design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <h3>Mobile app</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio / Favorites section (inspired by "Some of my awesome stuffs") -->
+        <div class="container" id="portfolio">
+            <h2 class="section-title">Some of my awesome<br>projects & favorites</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <i class="fa-brands fa-github"></i>
+                    <h4>GitHub</h4>
+                    <p>Open source & collaboration</p>
+                </div>
+                <div class="portfolio-item">
+                    <i class="fa-brands fa-pinterest"></i>
+                    <h4>Pinterest</h4>
+                    <p>UI/UX inspiration</p>
+                </div>
+                <div class="portfolio-item">
+                    <i class="fa-brands fa-youtube"></i>
+                    <h4>YouTube</h4>
+                    <p>Tech & learning</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About section with stats and description -->
+        <div class="container" id="about">
+            <h2 class="section-title">About me</h2>
+            <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus com odo viverra maecenas.</p>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <div class="number">24+</div>
+                    <div class="label">Projects done</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">8</div>
+                    <div class="label">Happy clients</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">100%</div>
+                    <div class="label">Commitment</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials (like Robert Thomson cards) -->
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor sollicitudin. Pellentesque id dolor tempor."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RT</div>
+                        <div class="author-info">
+                            <h5>Robert Thomson</h5>
+                            <span>Business Owner</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Fusce ac mattis nulla. Morbi eget ornare dui. Pellentesque id dolor tempor sapien feugiat ultrices."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">LJ</div>
+                        <div class="author-info">
+                            <h5>Linda James</h5>
+                            <span>Creative Director</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Quis ipsum suspendisse ultrices gravida. Risus com odo viverra maecenas. Morbi eget ornare dui."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div class="author-info">
+                            <h5>Michael K.</h5>
+                            <span>Startup Founder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact / discuss section (identical style to melan) -->
+        <div class="container" id="contact">
+            <div class="contact-cta">
+                <h2>Let’s discuss for a project</h2>
+                <a href="mailto:wanjohimorgan@gmail.com" class="btn"><i class="fa-regular fa-envelope"></i> wanjohimorgan@gmail.com</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Morgan Wanjohi</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                <i class="fa-brands fa-whatsapp" style="color: #f57c00;"></i> +254 115 926 777 
+                <span style="margin: 0 10px;">|</span> 
+                <i class="fa-regular fa-envelope"></i> wanjohimorgan@gmail.com
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

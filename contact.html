@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<header>
+    <h1>Contact Us</h1>
+</header>
+
+<main>
+    <form action="#" method="POST" novalidate>
+
+        <!-- ================= Personal Information ================= -->
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <!-- Full Name -->
+            <div>
+                <label for="fullName">Full Name *</label><br>
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="John Doe"
+                    required>
+            </div>
+
+            <br>
+
+            <!-- Email -->
+            <div>
+                <label for="email">Email Address *</label><br>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="john@example.com"
+                    required>
+            </div>
+
+            <br>
+
+            <!-- Phone -->
+            <div>
+                <label for="phone">Phone Number</label><br>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+254 700 123456">
+            </div>
+        </fieldset>
+
+        <br>
+
+        <!-- ================= Message Details ================= -->
+        <fieldset>
+            <legend>Message Details</legend>
+
+            <!-- Subject -->
+            <div>
+                <label for="subject">Subject *</label><br>
+                <select id="subject" name="subject" required>
+                    <option value="">-- Select a Subject --</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="support">Technical Support</option>
+                    <option value="feedback">Feedback</option>
+                </select>
+            </div>
+
+            <br>
+
+            <!-- Message -->
+            <div>
+                <label for="message">Message *</label><br>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    placeholder="Write your message here (minimum 50 characters)..."
+                    minlength="50"
+                    required></textarea>
+            </div>
+        </fieldset>
+
+        <br>
+
+        <!-- ================= Preferences ================= -->
+        <fieldset>
+            <legend>Preferences</legend>
+
+            <div>
+                <input
+                    type="checkbox"
+                    id="newsletter"
+                    name="newsletter"
+                    value="yes">
+                <label for="newsletter">Subscribe to our newsletter</label>
+            </div>
+        </fieldset>
+
+        <br>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+
+    </form>
+</main>
+
+<footer>
+    <p>&copy; 2026 Your Company Name</p>
+</footer>
+
+</body>
+</html>
